@@ -1,0 +1,17 @@
+#!/bin/bash -l
+
+#$ -P bf528
+#$ -cwd
+#$ -j y
+# #$ -pe omp 16
+
+echo "Running job $JOB_ID"
+echo "Started: $(date +%F)"
+echo "Running in directory: $PWD"
+
+# your commands here
+
+module load sratoolkit
+time fastq-dump --split-files P0_1.sra
+
+echo "Job finished: $(date +%F)"
